@@ -13,7 +13,7 @@ public class UserRegisterDTO extends RegisterDTO {
         return "UserRegisterDTO{" +
                 "username='" + getUsername() + '\'' +
                 ", password='" + getPassword()  + '\'' +
-                ", schoolYear='" + khedma + '\'' +
+                ", khedma='" + khedma + '\'' +
                 '}';
     }
 }

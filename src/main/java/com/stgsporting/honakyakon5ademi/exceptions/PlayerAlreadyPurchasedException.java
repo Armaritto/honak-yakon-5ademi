@@ -1,6 +1,6 @@
 package com.stgsporting.honakyakon5ademi.exceptions;
 
-public class PlayerAlreadyPurchasedException extends AlreadyPurchasedException {
+public class PlayerAlreadyPurchasedException extends RuntimeException {
     public PlayerAlreadyPurchasedException(String message) {
         super(message);
     }
