@@ -26,4 +26,8 @@ public class Response extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = DatabaseEnum.userId, nullable = false)
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = DatabaseEnum.quizId, nullable = false)
+    private Quiz quiz;
 }

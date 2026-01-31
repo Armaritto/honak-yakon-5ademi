@@ -21,8 +21,13 @@ public class DatabaseEnum {
 
     // QUESTIONS TABLE
     public static final String questionsTable = "QUESTIONS";
-    public static final String date = "date";
     public static final String text = "text";
+    public static final String type = "type";
+
+    // QUIZZES TABLE
+    public static final String quizTable = "QUIZZES";
+    public static final String quizId = "quizId";
+    public static final String date = "date";
 
     // RESPONSES TABLE
     public static final String responsesTable = "RESPONSES";
