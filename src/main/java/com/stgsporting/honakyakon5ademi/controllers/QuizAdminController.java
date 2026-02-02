@@ -6,16 +6,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/quiz")
-public class QuizController {
+@RequestMapping("/admin/quiz")
+public class QuizAdminController {
     private final QuizService quizService;
 
-    public QuizController(QuizService quizService) {
+    public QuizAdminController(QuizService quizService) {
         this.quizService = quizService;
     }
 
-    @GetMapping("")
-    public ResponseEntity<Object> getQuiz(@RequestParam Long id) {
-        return ResponseEntity.ok(quizService.getQuiz(id));
+    @PostMapping("")
+    public ResponseEntity<Object> createQuiz(@RequestBody QuizDTO quizDTO) {
+        quizService.createQuiz(quizDTO);
+        return ResponseEntity.ok("Quiz Created Successfully");
     }
+
 }
