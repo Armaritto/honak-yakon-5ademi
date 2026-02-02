@@ -23,4 +23,16 @@ public class Khedma extends BaseEntity {
     @OneToMany(mappedBy = "khedma", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<User> users;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = DatabaseEnum.baseId, referencedColumnName = DatabaseEnum.khedmaId)
+    private Progress progress;
+
+    public Integer getTodayProgress() {
+        return progress.getTodayResponses();
+    }
+
+    public Integer getTotalProgress() {
+        return progress.getTotalResponses();
+    }
 }
