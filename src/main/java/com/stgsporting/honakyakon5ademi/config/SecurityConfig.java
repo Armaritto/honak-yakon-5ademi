@@ -37,6 +37,7 @@ public class SecurityConfig {
                         .requestMatchers("/users/register").permitAll()
                         .requestMatchers("/schoolYears").permitAll()
                         .requestMatchers("/admin/login").permitAll()
+                        .requestMatchers("/khedmas").permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN") //TODO
                         .anyRequest().authenticated()
                 )

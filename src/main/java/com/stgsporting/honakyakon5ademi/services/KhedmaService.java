@@ -48,4 +48,8 @@ public class KhedmaService {
         }
         return progressDTOS;
     }
+
+    public List<Khedma> getAllKhedmaNames() {
+        return khedmaRepository.findAll();
+    }
 }
