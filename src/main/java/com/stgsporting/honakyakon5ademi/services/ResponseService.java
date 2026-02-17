@@ -1,6 +1,5 @@
 package com.stgsporting.honakyakon5ademi.services;
 
-import com.stgsporting.honakyakon5ademi.dtos.KhedmasDTO;
 import com.stgsporting.honakyakon5ademi.dtos.ResponseDTO;
 import com.stgsporting.honakyakon5ademi.dtos.UserResponseDTO;
 import com.stgsporting.honakyakon5ademi.entities.Question;
@@ -9,6 +8,7 @@ import com.stgsporting.honakyakon5ademi.entities.Response;
 import com.stgsporting.honakyakon5ademi.entities.User;
 import com.stgsporting.honakyakon5ademi.exceptions.QuestionNotFoundException;
 import com.stgsporting.honakyakon5ademi.exceptions.QuizNotFoundException;
+import com.stgsporting.honakyakon5ademi.exceptions.ResponseDuplicateException;
 import com.stgsporting.honakyakon5ademi.repositories.QuestionRepository;
 import com.stgsporting.honakyakon5ademi.repositories.QuizRepository;
 import com.stgsporting.honakyakon5ademi.repositories.ResponseRepository;
@@ -45,6 +45,8 @@ public class ResponseService {
             throw new QuizNotFoundException("Quiz not found");
         response.setQuiz(quiz.get());
         response.setCheckbox(responseDTO.getCheckbox());
+        if (responseRepository.findResponseByQuizAndUser(response.getQuiz(),response.getUser()).isPresent())
+            throw new ResponseDuplicateException("Quiz Already Solved");
         responseRepository.save(response);
         for(int i=0;i<responseDTO.getQuestionIds().size();i++) {
             Optional<Question> question = questionRepository.findQuestionById(responseDTO.getQuestionIds().get(i));

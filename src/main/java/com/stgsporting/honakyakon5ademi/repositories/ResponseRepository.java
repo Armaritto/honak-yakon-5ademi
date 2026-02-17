@@ -1,6 +1,7 @@
 package com.stgsporting.honakyakon5ademi.repositories;
 
 import com.stgsporting.honakyakon5ademi.dtos.UserResponseDTO;
+import com.stgsporting.honakyakon5ademi.entities.Quiz;
 import com.stgsporting.honakyakon5ademi.entities.Response;
 import com.stgsporting.honakyakon5ademi.entities.User;
 import org.springframework.data.domain.Page;
@@ -38,4 +39,6 @@ public interface ResponseRepository extends JpaRepository<Response, Long> {
             "GROUP BY r.id, r.checkbox",
             nativeQuery = true)
     Page<UserResponseDTO> getResponseAndAnswerByDateAndKhedma(Pageable pageable, @Param("date") Date date, @Param("khedmaId") Long khedmaId);
+
+    Optional<Response> findResponseByQuizAndUser(Quiz quiz, User user);
 }
